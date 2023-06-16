@@ -7,13 +7,10 @@ import RealTimeView from "@features/admin/dashboard/real-time/real-time-view";
 import DetailsView from "@features/admin/dashboard/details/details-view";
 import TraceabilityView from "@features/admin/traceability/traceability-view";
 import TraceabilityDetail from "@features/admin/traceability/traceability-detail";
-import ManpowerView from "@features/admin/master-data/manpower/manpower-view";
-import ManpowerDetails from "@features/admin/master-data/manpower/manpower-details";
-import ManpowerForm from "@features/admin/master-data/manpower/manpower-form";
-import MesinView from "@features/admin/master-data/mesin/mesin-view";
-import MesinDetails from "@features/admin/master-data/mesin/mesin-details";
-import MesinForm from "@features/admin/master-data/mesin/mesin-form";
 import { KarangTaruna } from "@features/admin/master-data/karang-taruna/front-page/karang-taruna-view";
+import { KarangTarunaForm } from "@features/admin/master-data/karang-taruna/form/karang-taruna-form-view";
+import { DaftarLokasi } from "@features/admin/master-data/daftar-lokasi/front-page/daftar-lokasi-view";
+import { KeanggotaanMasterData } from "@features/admin/master-data/keanggotaan/keanggotaan-view";
 
 const Root = () => {
   return <Outlet />;
@@ -70,7 +67,29 @@ export default createBrowserRouter([
         children: [
           {
             path: "karang-taruna",
-            element: <KarangTaruna />,
+            element: <Root />,
+            children: [
+              {
+                path: "",
+                element: <KarangTaruna />,
+              },
+              {
+                path: "form",
+                element: <KarangTarunaForm />,
+              },
+              {
+                path: "form/:id",
+                element: <KarangTarunaForm />,
+              },
+            ],
+          },
+          {
+            path: "daftar-lokasi",
+            element: <DaftarLokasi />,
+          },
+          {
+            path: "keanggotaan",
+            element: <KeanggotaanMasterData />,
           },
         ],
       },

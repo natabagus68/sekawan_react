@@ -98,9 +98,9 @@ export default function AdminLayout() {
               icon={<CubeIcon className="w-[24px] h-[24px]" />}
             >
               <NavItem label="Karang Taruna" to={"master-data/karang-taruna"} />
-              <NavItem label="Daftar Lokasi" />
+              <NavItem label="Daftar Lokasi" to={"master-data/daftar-lokasi"} />
 
-              <NavItem label="Keanggotaan" />
+              <NavItem label="Keanggotaan" to={"master-data/keanggotaan"} />
             </NavItem>
 
             <NavItem
