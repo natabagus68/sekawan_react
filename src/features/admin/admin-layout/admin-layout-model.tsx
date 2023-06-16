@@ -27,18 +27,13 @@ export default function useAdmin() {
     setIsOpenavatar(!!!isOpenAvatar);
   };
 
-  //click traceability button
-  const onOpenTraceability = (): void => {
-    navigate(`../admin/traceability`);
-  }
-
   //set navigate navbar
   const setNavigate = (url: string): void => {
     navigate(url);
   };
 
   //on logout
-  const onLogout = async(): Promise<void> => {
+  const onLogout = async (): Promise<void> => {
     try {
       await localStorage.removeItem("web-admin");
       window.location.reload();
@@ -57,7 +52,7 @@ export default function useAdmin() {
       setIsLoading(false);
       if (!localStorageData?.token) {
         navigate("../login");
-      } 
+      }
       // else {
       //   navigate(`../${window.location.pathname}`);
       // }
@@ -78,6 +73,5 @@ export default function useAdmin() {
     setNavigate,
     onOpenAvatar,
     onLogout,
-    onOpenTraceability
   };
 }

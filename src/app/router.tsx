@@ -13,6 +13,7 @@ import ManpowerForm from "@features/admin/master-data/manpower/manpower-form";
 import MesinView from "@features/admin/master-data/mesin/mesin-view";
 import MesinDetails from "@features/admin/master-data/mesin/mesin-details";
 import MesinForm from "@features/admin/master-data/mesin/mesin-form";
+import { KarangTaruna } from "@features/admin/master-data/karang-taruna/front-page/karang-taruna-view";
 
 const Root = () => {
   return <Outlet />;
@@ -64,46 +65,12 @@ export default createBrowserRouter([
         ],
       },
       {
-        path: "master-data/:type/manpower",
+        path: "master-data",
         element: <Root />,
         children: [
           {
-            path: "",
-            element: <ManpowerView />,
-          },
-          {
-            path: "details",
-            element: <ManpowerDetails />,
-          },
-          {
-            path: "create",
-            element: <ManpowerForm />,
-          },
-          {
-            path: "edit",
-            element: <ManpowerForm />,
-          },
-        ],
-      },
-      {
-        path: "master-data/:type/mesin",
-        element: <Root />,
-        children: [
-          {
-            path: "",
-            element: <MesinView />,
-          },
-          {
-            path: "details",
-            element: <MesinDetails />,
-          },
-          {
-            path: "create",
-            element: <MesinForm />,
-          },
-          {
-            path: "edit",
-            element: <MesinForm />,
+            path: "karang-taruna",
+            element: <KarangTaruna />,
           },
         ],
       },

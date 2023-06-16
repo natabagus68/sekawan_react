@@ -10,7 +10,12 @@ import { NavItem } from "@common/components";
 import LoadingIcon from "@common/components/icons-new/LoadingIcon";
 import SearchIcon from "@common/components/icons-new/SearchIcon";
 import MasterDataIcon from "@common/components/icons-new/MasterDataIcon";
-
+import LogoKR from "../../../assets/logo-karang-taruna.png";
+import AprovalIcon from "@common/components/icons/AprovalIcon";
+import DocumentsIcon from "@common/components/icons/DocumentsIcon";
+import ArrowTrading from "@common/components/icons/ArrowTrading";
+import { CubeIcon } from "@common/components/icons";
+import UserIcon from "@common/components/icons/UserIcon";
 export default function AdminLayout() {
   const admin = useAdmin();
   return admin.isLoading ? (
@@ -29,13 +34,6 @@ export default function AdminLayout() {
             className="cursor-pointer"
             onClick={() => admin.onOpenSideBar()}
           />
-          <button
-            className="px-[20px] gap-2 h-[46px] rounded-md bg-[#4D74B2] text-white flex items-center"
-            onClick={() => admin.onOpenTraceability()}
-          >
-            <SearchIcon />
-            <span>Traceability</span>
-          </button>
         </div>
         <div className="relative">
           <div
@@ -68,7 +66,10 @@ export default function AdminLayout() {
         } fixed w-[240px] h-full bg-white shadow-lg z-50 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
       >
         <div className="w-full h-[70px] shadow-sm flex items-center justify-center">
-          <img src={my_logo} alt="Logo Ragdalion" className="h-[50px]" />
+          <div className="flex gap-3 items-center pl-4">
+            <img src={LogoKR} alt="Logo Ragdalion" className="h-[50px]" />
+            <h1 className="font-monst text-sm">KARANG TARUNA DIGITAL</h1>
+          </div>
         </div>
         <div className="flex flex-col px-4 gap-[12px]">
           <span className="font-semibold text-[#5C5C5C]">Menu</span>
@@ -76,18 +77,47 @@ export default function AdminLayout() {
             <NavItem
               label={`Dashboard`}
               icon={<DashboardIcon className="w-[24px] h-[24px]" />}
-            >
-              <NavItem label="General" to={"dashboard/general"} />
-              <NavItem label="Details" to={"dashboard/details"} />
-              <NavItem label="Real Time" to={"dashboard/real-time"} />
-            </NavItem>
+            />
             <NavItem
+              label={`Aproval`}
+              icon={<AprovalIcon className="w-[24px] h-[24px]" />}
+            />
+
+            <NavItem
+              label={`Updates`}
+              icon={<DocumentsIcon className="w-[24px] h-[24px]" />}
+            />
+
+            <NavItem
+              label={`Leaderboard`}
+              icon={<ArrowTrading className="w-[24px] h-[24px]" />}
+            />
+
+            <NavItem
+              label={`Master Data`}
+              icon={<CubeIcon className="w-[24px] h-[24px]" />}
+            >
+              <NavItem label="Karang Taruna" to={"master-data/karang-taruna"} />
+              <NavItem label="Daftar Lokasi" />
+
+              <NavItem label="Keanggotaan" />
+            </NavItem>
+
+            <NavItem
+              label={`User`}
+              icon={<UserIcon className="w-[24px] h-[24px]" />}
+            >
+              <NavItem label="Admin" to={"master-data/manpower/manpower"} />
+              <NavItem label="Pengguna" to={"master-data/mesin/mesin"} />
+            </NavItem>
+
+            {/* <NavItem
               label={`Master Data`}
               icon={<MasterDataIcon className="w-[24px] h-[24px]" />}
             >
               <NavItem label="Manpower" to={"master-data/manpower/manpower"} />
               <NavItem label="Mesin" to={"master-data/mesin/mesin"} />
-            </NavItem>
+            </NavItem> */}
           </div>
         </div>
       </div>

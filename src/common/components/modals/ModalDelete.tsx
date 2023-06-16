@@ -1,18 +1,44 @@
 import Modal from "./Modal";
 import TrashIcon from "../icons-new/TrashIcon";
 
-export default function ModalDelete({ open = false, setOpen, setOpenConfirm }) {
+export default function ModalDelete({
+  open = false,
+  setOpen,
+  setOpenConfirm = null,
+  message = [],
+  tittle = "",
+}) {
+  const upprerLowerCace = (input: string) => {
+    let temp = input.split(" ");
+    let str = "";
+    temp.forEach((item, ind) => {
+      let newString = "";
+      for (let i = 0; i < item.length; i++) {
+        if (i === 0) {
+          newString += item[i].toUpperCase();
+        } else newString += item[i];
+      }
+
+      str += " ";
+
+      str += newString;
+    });
+
+    return str;
+  };
   return (
     <Modal open={open}>
       <div className="w-[430px] flex flex-col gap-8 items-center">
         <div className="flex items-center justify-center w-[150px] h-[150px] bg-[#F04438] rounded-full border-[8px] border-[#E9EEF5]">
           <TrashIcon className="w-[80px] h-[80px]" />
         </div>
-        <div className="flex items-center flex-col">
+        <div className="flex gap-2 items-center flex-col text-center">
           <span className="text-[#2D2A2A] text-[24px] font-semibold">
-            Hapus
+            {upprerLowerCace(tittle)}
           </span>
-          <span>Apakah anda yakin ingin menghapus data ini?</span>
+          {message.map((item, i) => {
+            return <span key={i}>{item}</span>;
+          })}
         </div>
 
         <div className="flex w-full items-end gap-4">
