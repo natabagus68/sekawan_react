@@ -15,26 +15,20 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useState } from "react";
+import { useKarangTaruna } from "./karang-taruna-view-model";
+import NoDataImg from "../../../../../assets/no-data.png";
 
 export const KarangTaruna = () => {
-  const [open, setOpen] = useState(false);
-  const [openDelete, setOpenDelete] = useState(false);
-  const handlerOpen = () => {
-    setOpen(!open);
-  };
-  const handleOpenDelete = () => {
-    setOpenDelete(!openDelete);
-  };
-
+  const model = useKarangTaruna();
   return (
     <>
       <ModalDelete
-        open={openDelete}
-        setOpen={setOpenDelete}
+        open={model.openDelete}
+        setOpen={model.setOpenDelete}
         message={["Apakah anda yakin ingin menghapus Karang Taruna ini?"]}
         tittle="Hapus Karang Taruna"
       />
-      <ModalDialog open={open} handleOpen={handlerOpen} />
+      <ModalDialog open={model.open} handleOpen={model.handlerOpen} />
       {/* --------- */}
       <main>
         <Breadcrumbs items={["Master Data Karang Taruna"]} />
@@ -100,7 +94,11 @@ export const KarangTaruna = () => {
               </Select>
             </div>
             <div className="w-52">
-              <Button className="mt-4 flex items-center gap-2 " size="md">
+              <Button
+                className="mt-4 flex items-center gap-2 "
+                size="md"
+                onClick={model.toform}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -121,7 +119,12 @@ export const KarangTaruna = () => {
           </div>
         </div>
         <main>
-          <table className="w-full">
+          {/* if have not data */}
+          <div className="w-full h-[500px] flex justify-center">
+            <img src={NoDataImg} alt="no data image" />
+          </div>
+          {/* if have some data */}
+          <table className="w-full hidden">
             <thead>
               <tr className="bg-[#FAFAFB] border-y border-gray-300">
                 <th className="text-start px-6 py-3">
@@ -189,7 +192,7 @@ export const KarangTaruna = () => {
                     <Button
                       color="blue"
                       className="flex gap-2 items-center"
-                      onClick={handlerOpen}
+                      onClick={model.handlerOpen}
                     >
                       <DetailButtonIcons className="w-6 h-6" />
                       Detail
@@ -198,7 +201,7 @@ export const KarangTaruna = () => {
                       <PencilSquer className="w-6 h-6" />
                       Edit
                     </Button>
-                    <Button color="red" onClick={handleOpenDelete}>
+                    <Button color="red" onClick={model.handleOpenDelete}>
                       <TrashIcon className="w-6 h-6" />
                     </Button>
                   </div>
