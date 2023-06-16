@@ -8,22 +8,34 @@ import { EyeIcon } from "@common/components/icons";
 import myLogo from "../../assets/my-logo.svg";
 import maintenanceLogo from "../../assets/maintenance-logo.png";
 import poweredByLogo from "../../assets/powered-by-logo.png";
-
+import Background from "../../assets/bg-login.png";
+import LogoKR from "../../assets/logo-karang-taruna.png";
+import TextLogin from "../../assets/text-login.png";
 export default function LoginView() {
   const login = useLogin();
   return (
     <main className="w-screen h-[100dvh] flex">
-      <div className="flex-1 bg-[#20519F] flex items-center justify-center relative">
-        <img src={maintenanceLogo} alt="My Logo" className="h-[346px] w-fit" />
-        <img src={poweredByLogo} alt="My Logo" className="h-[105px] w-fit absolute bottom-10" />
+      <div
+        className="flex-1 bg-cover bg-center flex items-center justify-center relative"
+        style={{ backgroundImage: `url(${Background})` }}
+      >
+        <div className="flex flex-col gap-10 justify-center items-center w-[80%]">
+          <img src={LogoKR} alt="My Logo" className="h-[180px] w-fit" />
+          <img src={TextLogin} alt="logo text login" />
+        </div>
       </div>
       <div className="flex-1 flex items-center justify-center">
         <form
-          className="w-[479px] h-[616px] bg-white rounded-xl border border-[#20519F] shadow-[#20519F] shadow-lg px-[72px] py-[92px] flex flex-col justify-between"
+          className="w-[479px] h-[616px] bg-white rounded-xl border border-[#20519F] shadow-[#20519F] shadow-md px-[72px] py-[92px] flex flex-col justify-between"
           onSubmit={login.onSubmitLogin}
         >
           <div className="flex flex-col">
-            <img src={myLogo} alt="My Logo" className="h-[94px] w-fit" />
+            <div className="flex gap-3 items-center mb-5">
+              <img src={LogoKR} alt="My Logo" className="h-[84px] w-fit" />
+              <h1 className="font-bold text-2xl font-monst">
+                Karang Taruna Digital
+              </h1>
+            </div>
             <span className="font-extrabold text-[34px] text-[#514E4E]">
               Selamat Datang.
             </span>
