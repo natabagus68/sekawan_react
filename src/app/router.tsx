@@ -11,6 +11,8 @@ import { KarangTaruna } from "@features/admin/master-data/karang-taruna/front-pa
 import { KarangTarunaForm } from "@features/admin/master-data/karang-taruna/form/karang-taruna-form-view";
 import { DaftarLokasi } from "@features/admin/master-data/daftar-lokasi/front-page/daftar-lokasi-view";
 import { KeanggotaanMasterData } from "@features/admin/master-data/keanggotaan/keanggotaan-view";
+import { UserAdmin } from "@features/admin/User/admin/front-page/user-admin-view";
+import { UserAdminForm } from "@features/admin/User/admin/form/user-admin-form-view";
 
 const Root = () => {
   return <Outlet />;
@@ -90,6 +92,30 @@ export default createBrowserRouter([
           {
             path: "keanggotaan",
             element: <KeanggotaanMasterData />,
+          },
+        ],
+      },
+      {
+        path: "user",
+        element: <Root />,
+        children: [
+          {
+            path: "admin",
+            element: <Root />,
+            children: [
+              {
+                path: "",
+                element: <UserAdmin />,
+              },
+              {
+                path: "form",
+                element: <UserAdminForm />,
+              },
+              {
+                path: ":id/form",
+                element: <UserAdminForm />,
+              },
+            ],
           },
         ],
       },

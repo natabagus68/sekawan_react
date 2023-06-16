@@ -107,7 +107,7 @@ export default function AdminLayout() {
               label={`User`}
               icon={<UserIcon className="w-[24px] h-[24px]" />}
             >
-              <NavItem label="Admin" to={"master-data/manpower/manpower"} />
+              <NavItem label="Admin" to={"user/admin"} />
               <NavItem label="Pengguna" to={"master-data/mesin/mesin"} />
             </NavItem>
 
