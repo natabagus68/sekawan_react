@@ -19,6 +19,8 @@ import ApprovalTable from "@features/admin/approval/approval-layout/ApprovalTabl
 import DetailAcara from "@features/admin/approval/acara/DetailAcara";
 import DetailBerita from "@features/admin/approval/berita/DetailBerita";
 import DeclinedTable from "@features/admin/approval/declined/DeclinedTable";
+import Updatelayout from "@features/admin/update/update-layout/Updatelayout";
+import UpdateTable from "@features/admin/update/update-layout/UpdateTable";
 
 const Root = () => {
   return <Outlet />;
@@ -77,6 +79,24 @@ export default createBrowserRouter([
             path: ":id/detail-berita",
             element : <DetailBerita/>
           }
+        ]
+      },
+      {
+        path : 'updates',
+        element : <Updatelayout/>,
+        children : [
+          {
+            path : '',
+            element : <UpdateTable/>
+          },
+          {
+            path : ':idAcara/detail',
+            element : <UpdateTable/>
+          },
+          {
+            path : ':idBerita/berita',
+            element : <UpdateTable/>
+          },
         ]
       },
       {

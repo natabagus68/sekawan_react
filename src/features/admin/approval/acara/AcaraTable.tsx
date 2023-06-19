@@ -5,11 +5,13 @@ import PlusIcon from '@common/components/icons-new/PlusIcon'
 import { Button, IconButton } from '@material-tailwind/react'
 import React from 'react'
 import useAcaraTableModel from './AcaraTableModel'
+import ModalConfirm from '@common/components/modals/ModalConfirm'
 
 export default function AcaraTable() {
   const table = useAcaraTableModel()
   return (
     <>
+      <ModalConfirm open={true} setOpen={false} cb={''} setOpenSuccess={''} />
       <div className='overflow-x-auto'>
         <table className='w-full '>
           <thead className='border border-y-[#D0D3D9] bg-[#FAFAFB]'>

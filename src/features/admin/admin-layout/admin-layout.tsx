@@ -27,7 +27,7 @@ export default function AdminLayout() {
       <header
         className={`${
           admin.isOpenSidebar ? "pl-[265px]" : "pl-[25px]"
-        } fixed w-full h-[70px] bg-[#20519F] shadow-lg z-50 flex items-center justify-between pr-[25px] transition-all ease-in-out delay-100`}
+        } fixed w-full h-[70px] bg-[#20519F] shadow-lg z-30 flex items-center justify-between pr-[25px] transition-all ease-in-out delay-100`}
       >
         <div className="flex gap-6 items-center">
           <BurgerIcon
@@ -63,7 +63,7 @@ export default function AdminLayout() {
       <div
         className={`${
           admin.isOpenSidebar ? null : "-translate-x-[240px]"
-        } fixed w-[240px] h-full bg-white shadow-lg z-50 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
+        } fixed w-[240px] h-full bg-white shadow-lg z-30 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
       >
         <div className="w-full h-[70px] shadow-sm flex items-center justify-center">
           <div className="flex gap-3 items-center pl-4">
@@ -78,20 +78,11 @@ export default function AdminLayout() {
               label={`Dashboard`}
               icon={<DashboardIcon className="w-[24px] h-[24px]" />}
             />
-            <NavItem
-              label={`Aproval`}
-              icon={<AprovalIcon className="w-[24px] h-[24px]" />}
-            />
+            <NavItem label={`Aproval`} icon={<AprovalIcon className="w-[24px] h-[24px]" />} to={`approval`}/>
 
-            <NavItem
-              label={`Updates`}
-              icon={<DocumentsIcon className="w-[24px] h-[24px]" />}
-            />
+            <NavItem label={`Updates`} icon={<DocumentsIcon className="w-[24px] h-[24px]" />} to={'updates'}/>
 
-            <NavItem
-              label={`Leaderboard`}
-              icon={<ArrowTrading className="w-[24px] h-[24px]" />}
-            />
+            <NavItem label={`Leaderboard`} icon={<ArrowTrading className="w-[24px] h-[24px]" />}/>
 
             <NavItem
               label={`Master Data`}
