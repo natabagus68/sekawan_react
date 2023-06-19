@@ -76,6 +76,7 @@ export default function AdminLayout() {
           <div className="flex flex-col gap-2">
             <NavItem
               label={`Dashboard`}
+              to={"dashboard"}
               icon={<DashboardIcon className="w-[24px] h-[24px]" />}
             />
             <NavItem
@@ -90,6 +91,7 @@ export default function AdminLayout() {
 
             <NavItem
               label={`Leaderboard`}
+              to={"leaderboard"}
               icon={<ArrowTrading className="w-[24px] h-[24px]" />}
             />
 
