@@ -27,7 +27,7 @@ export default function AdminLayout() {
       <header
         className={`${
           admin.isOpenSidebar ? "pl-[265px]" : "pl-[25px]"
-        } fixed w-full h-[70px] bg-[#20519F] shadow-lg z-50 flex items-center justify-between pr-[25px] transition-all ease-in-out delay-100`}
+        } fixed w-full h-[70px] bg-[#20519F] shadow-lg z-30 flex items-center justify-between pr-[25px] transition-all ease-in-out delay-100`}
       >
         <div className="flex gap-6 items-center">
           <BurgerIcon
@@ -63,7 +63,7 @@ export default function AdminLayout() {
       <div
         className={`${
           admin.isOpenSidebar ? null : "-translate-x-[240px]"
-        } fixed w-[240px] h-full bg-white shadow-lg z-50 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
+        } fixed w-[240px] h-full bg-white shadow-lg z-30 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
       >
         <div className="w-full h-[70px] shadow-sm flex items-center justify-center">
           <div className="flex gap-3 items-center pl-4">
@@ -74,52 +74,21 @@ export default function AdminLayout() {
         <div className="flex flex-col px-4 gap-[12px]">
           <span className="font-semibold text-[#5C5C5C]">Menu</span>
           <div className="flex flex-col gap-2">
-            <NavItem
-              label={`Dashboard`}
-              to={"dashboard"}
-              icon={<DashboardIcon className="w-[24px] h-[24px]" />}
-            />
-            <NavItem
-              label={`Aproval`}
-              icon={<AprovalIcon className="w-[24px] h-[24px]" />}
-            />
+            <NavItem label={`Dashboard`} to={"dashboard"} icon={<DashboardIcon className="w-[24px] h-[24px]" />} />
+            <NavItem label={`Aproval`} icon={<AprovalIcon className="w-[24px] h-[24px]" />} to={`approval`} />
+            <NavItem label={`Updates`} icon={<DocumentsIcon className="w-[24px] h-[24px]" />} to={'updates'} />
+            <NavItem label={`Leaderboard`} to={"leaderboard"} icon={<ArrowTrading className="w-[24px] h-[24px]" />} />
 
-            <NavItem
-              label={`Updates`}
-              icon={<DocumentsIcon className="w-[24px] h-[24px]" />}
-            />
-
-            <NavItem
-              label={`Leaderboard`}
-              to={"leaderboard"}
-              icon={<ArrowTrading className="w-[24px] h-[24px]" />}
-            />
-
-            <NavItem
-              label={`Master Data`}
-              icon={<CubeIcon className="w-[24px] h-[24px]" />}
-            >
+            <NavItem label={`Master Data`} icon={<CubeIcon className="w-[24px] h-[24px]" />} >
               <NavItem label="Karang Taruna" to={"master-data/karang-taruna"} />
-              <NavItem label="Daftar Lokasi" />
-
-              <NavItem label="Keanggotaan" />
+              <NavItem label="Daftar Lokasi" to={"master-data/daftar-lokasi"} />
+              <NavItem label="Keanggotaan" to={"master-data/keanggotaan"} />
             </NavItem>
 
-            <NavItem
-              label={`User`}
-              icon={<UserIcon className="w-[24px] h-[24px]" />}
-            >
-              <NavItem label="Admin" to={"master-data/manpower/manpower"} />
+            <NavItem label={`User`} icon={<UserIcon className="w-[24px] h-[24px]" />} >
+              <NavItem label="Admin" to={"user/admin"} />
               <NavItem label="Pengguna" to={"master-data/mesin/mesin"} />
             </NavItem>
-
-            {/* <NavItem
-              label={`Master Data`}
-              icon={<MasterDataIcon className="w-[24px] h-[24px]" />}
-            >
-              <NavItem label="Manpower" to={"master-data/manpower/manpower"} />
-              <NavItem label="Mesin" to={"master-data/mesin/mesin"} />
-            </NavItem> */}
           </div>
         </div>
       </div>
