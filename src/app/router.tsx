@@ -13,6 +13,12 @@ import { DaftarLokasi } from "@features/admin/master-data/daftar-lokasi/front-pa
 import { KeanggotaanMasterData } from "@features/admin/master-data/keanggotaan/keanggotaan-view";
 import { UserAdmin } from "@features/admin/User/admin/front-page/user-admin-view";
 import { UserAdminForm } from "@features/admin/User/admin/form/user-admin-form-view";
+import { element } from "prop-types";
+import ApprovalLayout from "@features/admin/approval/approval-layout/ApprovalLayout";
+import ApprovalTable from "@features/admin/approval/approval-layout/ApprovalTable";
+import DetailAcara from "@features/admin/approval/acara/DetailAcara";
+import DetailBerita from "@features/admin/approval/berita/DetailBerita";
+import DeclinedTable from "@features/admin/approval/declined/DeclinedTable";
 
 const Root = () => {
   return <Outlet />;
@@ -44,6 +50,34 @@ export default createBrowserRouter([
             element: <TraceabilityDetail />,
           },
         ],
+      },
+      {
+        path : "approval",
+        element : <ApprovalLayout/>,
+        children : [
+          {
+            path : "",
+            element : <ApprovalTable/>
+          },
+          {
+            path : 'declined',
+            element : <Root/>,
+            children : [
+              {
+                path : "",
+                element : <DeclinedTable/>
+              }
+            ]
+          },
+          {
+            path: ":id/detail-acara",
+            element : <DetailAcara/>
+          },
+          {
+            path: ":id/detail-berita",
+            element : <DetailBerita/>
+          }
+        ]
       },
       {
         path: "dashboard",
