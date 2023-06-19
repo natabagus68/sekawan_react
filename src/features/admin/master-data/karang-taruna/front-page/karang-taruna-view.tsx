@@ -120,11 +120,11 @@ export const KarangTaruna = () => {
         </div>
         <main>
           {/* if have not data */}
-          <div className="w-full h-[500px] flex justify-center">
+          {/* <div className="w-full h-[500px] flex justify-center hidden">
             <img src={NoDataImg} alt="no data image" />
-          </div>
+          </div> */}
           {/* if have some data */}
-          <table className="w-full hidden">
+          <table className="w-full">
             <thead>
               <tr className="bg-[#FAFAFB] border-y border-gray-300">
                 <th className="text-start px-6 py-3">
