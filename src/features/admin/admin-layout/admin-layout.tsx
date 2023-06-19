@@ -74,41 +74,21 @@ export default function AdminLayout() {
         <div className="flex flex-col px-4 gap-[12px]">
           <span className="font-semibold text-[#5C5C5C]">Menu</span>
           <div className="flex flex-col gap-2">
-            <NavItem
-              label={`Dashboard`}
-              icon={<DashboardIcon className="w-[24px] h-[24px]" />}
-            />
-            <NavItem label={`Aproval`} icon={<AprovalIcon className="w-[24px] h-[24px]" />} to={`approval`}/>
+            <NavItem label={`Dashboard`} to={"dashboard"} icon={<DashboardIcon className="w-[24px] h-[24px]" />} />
+            <NavItem label={`Aproval`} icon={<AprovalIcon className="w-[24px] h-[24px]" />} to={`approval`} />
+            <NavItem label={`Updates`} icon={<DocumentsIcon className="w-[24px] h-[24px]" />} to={'updates'} />
+            <NavItem label={`Leaderboard`} to={"leaderboard"} icon={<ArrowTrading className="w-[24px] h-[24px]" />} />
 
-            <NavItem label={`Updates`} icon={<DocumentsIcon className="w-[24px] h-[24px]" />} to={'updates'}/>
-
-            <NavItem label={`Leaderboard`} icon={<ArrowTrading className="w-[24px] h-[24px]" />}/>
-
-            <NavItem
-              label={`Master Data`}
-              icon={<CubeIcon className="w-[24px] h-[24px]" />}
-            >
+            <NavItem label={`Master Data`} icon={<CubeIcon className="w-[24px] h-[24px]" />} >
               <NavItem label="Karang Taruna" to={"master-data/karang-taruna"} />
               <NavItem label="Daftar Lokasi" to={"master-data/daftar-lokasi"} />
-
               <NavItem label="Keanggotaan" to={"master-data/keanggotaan"} />
             </NavItem>
 
-            <NavItem
-              label={`User`}
-              icon={<UserIcon className="w-[24px] h-[24px]" />}
-            >
+            <NavItem label={`User`} icon={<UserIcon className="w-[24px] h-[24px]" />} >
               <NavItem label="Admin" to={"user/admin"} />
               <NavItem label="Pengguna" to={"master-data/mesin/mesin"} />
             </NavItem>
-
-            {/* <NavItem
-              label={`Master Data`}
-              icon={<MasterDataIcon className="w-[24px] h-[24px]" />}
-            >
-              <NavItem label="Manpower" to={"master-data/manpower/manpower"} />
-              <NavItem label="Mesin" to={"master-data/mesin/mesin"} />
-            </NavItem> */}
           </div>
         </div>
       </div>

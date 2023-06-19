@@ -1,19 +1,17 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import { Error404 } from "../common/components";
 import LoginView from "@features/auth/login-view";
-import GeneralView from "@features/admin/dashboard/general/general-view";
 import AdminLayout from "@features/admin/admin-layout/admin-layout";
-import RealTimeView from "@features/admin/dashboard/real-time/real-time-view";
-import DetailsView from "@features/admin/dashboard/details/details-view";
 import TraceabilityView from "@features/admin/traceability/traceability-view";
 import TraceabilityDetail from "@features/admin/traceability/traceability-detail";
 import { KarangTaruna } from "@features/admin/master-data/karang-taruna/front-page/karang-taruna-view";
+import Dashboard from "@features/admin/dashboard/dashboard";
+import LeaderBoard from "@features/admin/leaderboard/leaderboard";
 import { KarangTarunaForm } from "@features/admin/master-data/karang-taruna/form/karang-taruna-form-view";
 import { DaftarLokasi } from "@features/admin/master-data/daftar-lokasi/front-page/daftar-lokasi-view";
 import { KeanggotaanMasterData } from "@features/admin/master-data/keanggotaan/keanggotaan-view";
 import { UserAdmin } from "@features/admin/User/admin/front-page/user-admin-view";
 import { UserAdminForm } from "@features/admin/User/admin/form/user-admin-form-view";
-import { element } from "prop-types";
 import ApprovalLayout from "@features/admin/approval/approval-layout/ApprovalLayout";
 import ApprovalTable from "@features/admin/approval/approval-layout/ApprovalTable";
 import DetailAcara from "@features/admin/approval/acara/DetailAcara";
@@ -101,21 +99,11 @@ export default createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Root />,
-        children: [
-          {
-            path: "general",
-            element: <GeneralView />,
-          },
-          {
-            path: "details",
-            element: <DetailsView />,
-          },
-          {
-            path: "real-time",
-            element: <RealTimeView />,
-          },
-        ],
+        element: <Dashboard />
+      },
+      {
+        path: "leaderboard",
+        element: <LeaderBoard />
       },
       {
         path: "master-data",
