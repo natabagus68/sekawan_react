@@ -10,7 +10,7 @@ export default function useAdmin() {
   //avatar status
   const [isOpenAvatar, setIsOpenavatar] = useState(false);
   // loading state
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   //navbar status click
   const onOpenNavbar = (): void => {
@@ -43,25 +43,25 @@ export default function useAdmin() {
   };
 
   //checking me
-  const onIsMe = async (): Promise<void> => {
-    setIsLoading(true);
-    const localStorageData = await JSON.parse(
-      localStorage.getItem("web-admin")
-    );
-    setTimeout(() => {
-      setIsLoading(false);
-      if (!localStorageData?.token) {
-        navigate("../login");
-      }
-      // else {
-      //   navigate(`../${window.location.pathname}`);
-      // }
-    }, 500);
-  };
+  // const onIsMe = async (): Promise<void> => {
+  //   setIsLoading(true);
+  //   const localStorageData = await JSON.parse(
+  //     localStorage.getItem("web-admin")
+  //   );
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //     if (!localStorageData?.token) {
+  //       navigate("../login");
+  //     }
+  //     // else {
+  //     //   navigate(`../${window.location.pathname}`);
+  //     // }
+  //   }, 500);
+  // };
 
-  useEffect(() => {
-    onIsMe();
-  }, []);
+  // useEffect(() => {
+  //   onIsMe();
+  // }, []);
 
   return {
     isOpenNavbar,
