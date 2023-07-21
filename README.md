@@ -6,7 +6,7 @@ This is React.js admin template
 
 - Vite.js + React.js
 - React Router V6
-- Material TailwindCss
+- Material/TailwindCss
 - Headless UI
 - Axios
 
