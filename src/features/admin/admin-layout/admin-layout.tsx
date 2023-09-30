@@ -1,104 +1,104 @@
-import { Outlet } from "react-router-dom";
-import my_logo from "../../../assets/my-logo.svg";
-import FullscreenIcon from "@common/components/icons-new/FullscreenIcon";
-import BurgerIcon from "@common/components/icons-new/BurgerIcon";
-import DashboardIcon from "@common/components/icons-new/DashboardIcon";
-import ChevronIcon from "@common/components/icons-new/ChevronIcon";
 import useAdmin from "./admin-layout-model";
-import LogoutIcon from "@common/components/icons-new/LogoutIcon";
-import { NavItem } from "@common/components";
-import LoadingIcon from "@common/components/icons-new/LoadingIcon";
-import SearchIcon from "@common/components/icons-new/SearchIcon";
-import MasterDataIcon from "@common/components/icons-new/MasterDataIcon";
-import LogoKR from "../../../assets/logo-karang-taruna.png";
-import AprovalIcon from "@common/components/icons/AprovalIcon";
-import DocumentsIcon from "@common/components/icons/DocumentsIcon";
-import ArrowTrading from "@common/components/icons/ArrowTrading";
-import { CubeIcon } from "@common/components/icons";
-import UserIcon from "@common/components/icons/UserIcon";
+import {
+  Card,
+  Typography,
+  List,
+  ListItem,
+  ListItemPrefix,
+  Avatar,
+} from "@material-tailwind/react";
+import {
+  ChartPieIcon,
+  TicketIcon,
+  UserGroupIcon,
+  UserIcon,
+  NewspaperIcon,
+} from "@heroicons/react/24/solid";
+import { Bell, Lightbulb, SearchIcon } from "lucide-react";
+import { LayoutContext } from "./layout-context";
+import { Outlet } from "react-router-dom";
 export default function AdminLayout() {
-  const admin = useAdmin();
-  return admin.isLoading ? (
-    <main className="w-screen h-screen flex bg-gray-200 items-center justify-center">
-      <LoadingIcon className="animate-spin w-[80px] h-[80px]" />
-    </main>
-  ) : (
-    <main className="relative">
-      <header
-        className={`${
-          admin.isOpenSidebar ? "pl-[265px]" : "pl-[25px]"
-        } fixed w-full h-[70px] bg-[#20519F] shadow-lg z-30 flex items-center justify-between pr-[25px] transition-all ease-in-out delay-100`}
-      >
-        <div className="flex gap-6 items-center">
-          <BurgerIcon
-            className="cursor-pointer"
-            onClick={() => admin.onOpenSideBar()}
-          />
+  const model = useAdmin();
+  return (
+    <main className="flex w-full h-screen ">
+      <Card className=" h-full w-full max-w-[16rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-gray-800 rounded-none">
+        <div className="mb-2 p-4 flex items-center gap-3">
+          <div className="w-8 h-8 bg-indigo-500 rounded-full"></div>
+          <Typography variant="h5" className="text-gray-400">
+            Dashboard Kit
+          </Typography>
         </div>
-        <div className="relative">
-          <div
-            className="flex gap-2 items-center cursor-pointer"
-            onClick={() => admin.onOpenAvatar()}
-          >
-            <div className="w-6 h-6 rounded-full bg-white"></div>
-            <span className="text-white font-semibold">Admin</span>
-            <ChevronIcon color="white" />
+        <List className="w-full text-gray-400">
+          <ListItem>
+            <ListItemPrefix>
+              <ChartPieIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Overview
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <TicketIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Tiket
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <Lightbulb className="h-5 w-5" />
+            </ListItemPrefix>
+            Ideas
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <UserGroupIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Contacts
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <UserIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Agents
+          </ListItem>
+          <ListItem>
+            <ListItemPrefix>
+              <NewspaperIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Articles
+          </ListItem>
+        </List>
+      </Card>
+      <section className="h-full flex-1 px-8 overflow-y-scroll ">
+        <nav className="w-full flex justify-between items-center pt-2">
+          <div>
+            <Typography variant="h4" className="text-gray-800">
+              {model.headerName}
+            </Typography>
           </div>
-          <div
-            className={`${
-              admin.isOpenAvatar ? "flex" : "hidden"
-            } absolute top-[35px] bg-white rounded-md overflow-hidden right-0 flex-col gap-2 min-w-[190px] border border-gray-400`}
-            onMouseLeave={() => admin.onOpenAvatar()}
-          >
-            <div
-              className="flex items-center gap-3 cursor-pointer px-4 py-2 hover:bg-gray-100"
-              onClick={() => admin.onLogout()}
-            >
-              <LogoutIcon />
-              <span>Logout</span>
+          <div className="flex items-center justify-between w-[20%]">
+            <div className="flex items-center gap-2">
+              <SearchIcon className="text-gray-400 w-5 h-5" />
+              <Bell className="text-gray-400 w-5 h-5" />
+            </div>
+            <div className="h-full flex items-center pb-1 text-gray-400">|</div>
+            <div className="flex items-center gap-2">
+              <p className="text-[14px] text-gray-800 font-[600]">Nata Bagus</p>
+              <Avatar
+                src="https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                alt="avatar"
+                size="sm"
+                className="w-7 h-7"
+              />
             </div>
           </div>
-        </div>
-      </header>
-      <div
-        className={`${
-          admin.isOpenSidebar ? null : "-translate-x-[240px]"
-        } fixed w-[240px] h-full bg-white shadow-lg z-30 flex flex-col gap-[20px] transition-all ease-in-out delay-100`}
-      >
-        <div className="w-full h-[70px] shadow-sm flex items-center justify-center">
-          <div className="flex gap-3 items-center pl-4">
-            <img src={LogoKR} alt="Logo Ragdalion" className="h-[50px]" />
-            <h1 className="font-monst text-sm">KARANG TARUNA DIGITAL</h1>
-          </div>
-        </div>
-        <div className="flex flex-col px-4 gap-[12px]">
-          <span className="font-semibold text-[#5C5C5C]">Menu</span>
-          <div className="flex flex-col gap-2">
-            <NavItem label={`Dashboard`} to={"dashboard"} icon={<DashboardIcon className="w-[24px] h-[24px]" />} />
-            <NavItem label={`Aproval`} icon={<AprovalIcon className="w-[24px] h-[24px]" />} to={`approval`} />
-            <NavItem label={`Updates`} icon={<DocumentsIcon className="w-[24px] h-[24px]" />} to={'updates'} />
-            <NavItem label={`Leaderboard`} to={"leaderboard"} icon={<ArrowTrading className="w-[24px] h-[24px]" />} />
-
-            <NavItem label={`Master Data`} icon={<CubeIcon className="w-[24px] h-[24px]" />} >
-              <NavItem label="Karang Taruna" to={"master-data/karang-taruna"} />
-              <NavItem label="Daftar Lokasi" to={"master-data/daftar-lokasi"} />
-              <NavItem label="Keanggotaan" to={"master-data/keanggotaan"} />
-            </NavItem>
-
-            <NavItem label={`User`} icon={<UserIcon className="w-[24px] h-[24px]" />} >
-              <NavItem label="Admin" to={"user/admin"} />
-              <NavItem label="Pengguna" to={"master-data/mesin/mesin"} />
-            </NavItem>
-          </div>
-        </div>
-      </div>
-      <div
-        className={`${
-          admin.isOpenSidebar ? "pl-[265px]" : "pl-[25px]"
-        } flex-1 pt-[95px] p-[25px] transition-all ease-in-out delay-100`}
-      >
-        <Outlet />
-      </div>
+        </nav>
+        <main className="pt-16">
+          <LayoutContext.Provider
+            value={{ name: model.headerName, change: model.changeHeaderName }}
+          >
+            <Outlet />
+          </LayoutContext.Provider>
+        </main>
+      </section>
     </main>
   );
 }
