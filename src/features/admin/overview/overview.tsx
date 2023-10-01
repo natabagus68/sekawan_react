@@ -3,10 +3,8 @@ import { Prompt } from "@common/components/prompt";
 import {
   Card,
   CardBody,
-  CardFooter,
   Typography,
   Button,
-  Radio,
   Checkbox,
 } from "@material-tailwind/react";
 import { Plus } from "lucide-react";
@@ -17,10 +15,9 @@ export const Overview = () => {
     <>
       <main className="mb-3">
         <div className="flex items-center justify-between">
-          <Prompt head={"Unresolved"} content={"60"} />
-          <Prompt head={"Overdue"} content={"16"} />
-          <Prompt head={"Open"} content={"43"} />
-          <Prompt head={"On hold"} content={"64"} />
+          {model.overview?.prompts?.map((item) => {
+            return <Prompt head={item?.head} content={item?.value} />;
+          })}
         </div>
         <div className="w-full border border-gray-200 rounded-lg bg-white shadow-sm mt-10 flex">
           <div className="w-[70%] border-r border-gray-200 p-4">
@@ -32,8 +29,8 @@ export const Overview = () => {
             </div>
             <div className="mt-8">
               <ChartLine
-                datas={[12, 1, 21, 32, 11.1]}
-                labels={[1, 2, 3, 4, 5, 6]}
+                datas={model.overview.charts.map((item) => item.count)}
+                labels={model.overview.charts.map((item) => item.label)}
                 height={200}
               />
             </div>
@@ -41,25 +38,25 @@ export const Overview = () => {
           <div className="flex-1 flex flex-col">
             <div className="flex-1 flex flex-col items-center justify-center gap-2 border-b border-gray-200">
               <p className="text-[10px] text-gray-400">Resolved</p>
-              <p>449</p>
+              <p>{model.overview.side.solved}</p>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center gap-2 border-b border-gray-200">
               <p className="text-[10px] text-gray-400">Recived</p>
-              <p>449</p>
+              <p>{model.overview.side.recived}</p>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center gap-2 border-b border-gray-200">
               <p className="text-[10px] text-gray-400">
                 Avarage first response time
               </p>
-              <p>449</p>
+              <p>{model.overview.side.AfirstRT}</p>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center gap-2 border-b border-gray-200">
               <p className="text-[10px] text-gray-400">Avarage respose time</p>
-              <p>449</p>
+              <p>{model.overview.side.ART}</p>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center gap-2 border-b border-gray-200">
               <p className="text-[10px] text-gray-400">Resolution within SLA</p>
-              <p>449</p>
+              <p>{model.overview.side.SLA}</p>
             </div>
           </div>
         </div>
@@ -88,42 +85,19 @@ export const Overview = () => {
                   </Typography>
                 </div>
                 <div className="mt-8">
-                  <div className="flex items-center justify-between border-b border-gray-200 py-4 px-3">
-                    <Typography
-                      variant="h5"
-                      className="text-gray-700 text-[16px]"
-                    >
-                      Waiting on Feature Request
-                    </Typography>
-                    <p className="text-[16px]">4238</p>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 py-4 px-3">
-                    <Typography
-                      variant="h5"
-                      className="text-gray-700 text-[16px]"
-                    >
-                      Waiting Customer Response
-                    </Typography>
-                    <p className="text-[16px]">4238</p>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 py-4 px-3">
-                    <Typography
-                      variant="h5"
-                      className="text-gray-700 text-[16px]"
-                    >
-                      Waiting Developer Fix
-                    </Typography>
-                    <p className="text-[16px]">281</p>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 py-4 px-3">
-                    <Typography
-                      variant="h5"
-                      className="text-gray-700 text-[16px]"
-                    >
-                      Panding
-                    </Typography>
-                    <p className="text-[16px]">4238</p>
-                  </div>
+                  {model.overview.unresolved.map((item) => {
+                    return (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-4 px-3">
+                        <Typography
+                          variant="h5"
+                          className="text-gray-700 text-[16px]"
+                        >
+                          {item?.name}
+                        </Typography>
+                        <p className="text-[16px]">{item?.value}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </CardBody>
             </Card>
@@ -148,62 +122,43 @@ export const Overview = () => {
                   <div className="flex items-center justify-between border-b border-gray-200 px-3">
                     <div>
                       <input
+                        value={model.task.name}
+                        onChange={model.handelFormTask}
                         placeholder="Create new task"
                         type="text"
                         className="flex-1 py-4 px-3 placeholder:text-gray-300 placeholder:font-bold text-[14px] outline-none"
                       />
                     </div>
-                    <button className="p-2 bg-gray-400 rounded-lg">
+                    <button
+                      onClick={model.addTask}
+                      className="p-2 bg-gray-400 rounded-lg"
+                    >
                       <Plus className="w-3 h-3 text-gray-8010" />
                     </button>
                   </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 py-1.5 px-3">
-                    <div className="flex items-center gap-1">
-                      <Checkbox
-                        ripple={false}
-                        className="h-5 w-5 rounded-full border-gray-900/20 bg-gray-900/10 transition-all hover:scale-105 hover:before:opacity-0"
-                      />
-                      <Typography
-                        variant="h5"
-                        className="text-gray-700 text-[16px]"
-                      >
-                        Finish ticket update
-                      </Typography>
-                    </div>
-                    <Button className="py-1 px-2 bg-yellow-700">urgent</Button>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 py-1.5 px-3">
-                    <div className="flex items-center gap-1">
-                      <Checkbox
-                        ripple={false}
-                        className="h-5 w-5 rounded-full border-gray-900/20 bg-gray-900/10 transition-all hover:scale-105 hover:before:opacity-0"
-                      />
-                      <Typography
-                        variant="h5"
-                        className="text-gray-700 text-[16px]"
-                      >
-                        Create new ticket example
-                      </Typography>
-                    </div>
-                    <Button className="py-1 px-2 bg-green-700">new</Button>
-                  </div>
-                  <div className="flex items-center justify-between border-b border-gray-200 py-1.5 px-3">
-                    <div className="flex items-center gap-1">
-                      <Checkbox
-                        ripple={false}
-                        className="h-5 w-5 rounded-full border-gray-900/20 bg-gray-900/10 transition-all hover:scale-105 hover:before:opacity-0"
-                      />
-                      <Typography
-                        variant="h5"
-                        className="text-gray-700 text-[16px]"
-                      >
-                        Update ticket report
-                      </Typography>
-                    </div>
-                    <Button className="py-1 px-2 bg-gray-400 text-gray-600">
-                      default
-                    </Button>
-                  </div>
+                  {model.overview.task.map((item) => {
+                    return (
+                      <div className="flex items-center justify-between border-b border-gray-200 py-1.5 px-3">
+                        <div className="flex items-center gap-1">
+                          <Checkbox
+                            onClick={() => model.checklist(item.id)}
+                            ripple={item.check}
+                            checked={item.check}
+                            className="h-5 w-5 rounded-full border-gray-900/20 bg-gray-900/10 transition-all hover:scale-105 hover:before:opacity-0"
+                          />
+                          <Typography
+                            variant="h5"
+                            className="text-gray-700 text-[16px]"
+                          >
+                            {item.name}
+                          </Typography>
+                        </div>
+                        <Button className={`py-1 px-2 bg-${item.color}`}>
+                          {item.type}
+                        </Button>
+                      </div>
+                    );
+                  })}
                 </div>
               </CardBody>
             </Card>

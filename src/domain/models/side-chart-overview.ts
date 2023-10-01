@@ -2,11 +2,11 @@ import { Entity } from "./_entity";
 
 export interface ISideChartOverview {
   id?: string;
-  solved: number;
-  recived: number;
-  AfirstRT: number;
-  ART: number;
-  SLA: number;
+  solved: number | string;
+  recived: number | string;
+  AfirstRT: number | string;
+  ART: number | string;
+  SLA: number | string;
 }
 
 export class SideChartOverview extends Entity<ISideChartOverview> {
@@ -24,19 +24,19 @@ export class SideChartOverview extends Entity<ISideChartOverview> {
       SLA: this.SLA,
     };
   }
-  get solved(): number {
+  get solved(): number | string {
     return this._props.solved;
   }
-  get recived(): number {
+  get recived(): number | string {
     return this._props.recived;
   }
-  get AfirstRT(): number {
+  get AfirstRT(): number | string {
     return this._props.AfirstRT;
   }
-  get ART(): number {
+  get ART(): number | string {
     return this._props.ART;
   }
-  get SLA(): number {
+  get SLA(): number | string {
     return this._props.SLA;
   }
 }

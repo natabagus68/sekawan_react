@@ -5,6 +5,7 @@ export interface ITask {
   check: boolean;
   name: string;
   type: string;
+  color: string;
 }
 
 export class Task extends Entity<ITask> {
@@ -17,6 +18,7 @@ export class Task extends Entity<ITask> {
       check: this.check,
       name: this.name,
       type: this.type,
+      color: this.color,
     };
   }
 
@@ -29,5 +31,8 @@ export class Task extends Entity<ITask> {
 
   get type(): string {
     return this._props.type;
+  }
+  get color(): string {
+    return this._props.color;
   }
 }

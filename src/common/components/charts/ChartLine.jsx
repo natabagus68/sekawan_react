@@ -5,11 +5,11 @@ ChartJS.register(...registerables);
 
 export const ChartLine = ({ datas, labels, height, maxValue = 300 }) => {
   const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+    labels: labels,
     datasets: [
       {
         label: "Data",
-        data: [10, 20, 15, 25, 30],
+        data: datas,
         fill: false, // Jangan mengisi area di bawah garis
         borderColor: "indigo", // Warna garis indigo
         borderWidth: 2,
