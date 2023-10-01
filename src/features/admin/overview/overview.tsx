@@ -10,7 +10,9 @@ import {
   Checkbox,
 } from "@material-tailwind/react";
 import { Plus } from "lucide-react";
+import { useOverview } from "./overview-model";
 export const Overview = () => {
+  const model = useOverview();
   return (
     <>
       <main className="mb-3">
