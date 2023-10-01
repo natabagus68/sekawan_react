@@ -82,7 +82,7 @@ export const Login = () => {
           <CardFooter className="pt-0">
             <Button
               className="bg-indigo-500"
-              onClick={model.handleEye}
+              onClick={model.handleLogin}
               fullWidth
             >
               Log in
