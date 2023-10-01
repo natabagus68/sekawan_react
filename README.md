@@ -31,12 +31,28 @@ yarn
 yarn dev
 ```
 
+## Settup JSON
+
+1. create a folder, with a name of your choice outside the FE root folder, and create a "db.json" file in that folder, and the data for db.json has been provided in the FE root in a folder called "json-file"
+
+2. install JSON-Server and JSON Server Auth
+
+```
+yarn add -D json-server json-server-auth
+```
+
+3. run JSON-Server
+
+```
+json-server db.json -m ./node_modules/json-server-auth
+```
+
 ## Folder Structure
 
 ```
 root
-|   public
-|
+|  public
+|  file-json
 + src
 |   + app
 |   |   + services

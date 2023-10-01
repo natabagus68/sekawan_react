@@ -1,0 +1,134 @@
+{
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$QxIq0b4pTcFynLxUF2H5TeAY/RFVzfXbCUjxhZL9JEFd5H8OAFoYS",
+      "id": 1
+    }
+  ],
+  "overview": {
+    "unresolved": [
+      {
+        "name": "Waiting on Featur Request",
+        "count": 4238
+      },
+      {
+        "name": "Waiting Customer Response",
+        "count": 1005
+      },
+      {
+        "name": "Waiting Developer Fix",
+        "count": 914
+      },
+      {
+        "name": "Pending",
+        "count": 281
+      }
+    ],
+    "prompt": [
+      {
+        "head": "Unresolved",
+        "value": 60
+      },
+      {
+        "head": "Overdue",
+        "value": 16
+      },
+      {
+        "head": "Open",
+        "value": 43
+      },
+      {
+        "head": "On hold",
+        "value": 64
+      }
+    ],
+    "chart-data": [
+      {
+        "label": "Januari",
+        "data": 100
+      },
+      {
+        "label": "Februari",
+        "data": 120
+      },
+      {
+        "label": "Maret",
+        "data": 150
+      },
+      {
+        "label": "April",
+        "data": 130
+      },
+      {
+        "label": "Mei",
+        "data": 160
+      },
+      {
+        "label": "Juni",
+        "data": 180
+      },
+      {
+        "label": "Juli",
+        "data": 200
+      },
+      {
+        "label": "Agustus",
+        "data": 220
+      },
+      {
+        "label": "September",
+        "data": 250
+      },
+      {
+        "label": "Oktober",
+        "data": 230
+      },
+      {
+        "label": "November",
+        "data": 260
+      },
+      {
+        "label": "Desember",
+        "data": 280
+      }
+    ],
+    "side": {
+      "solved": 449,
+      "recived": 426,
+      "AfirstRT": "33m",
+      "ART": "3h 8m",
+      "SLA": "94%"
+    }
+  },
+  "task": [
+    {
+      "id": 1,
+      "check": false,
+      "task": "Finish ticket update",
+      "status": "Urgent",
+      "color": "yellow-700"
+    },
+    {
+      "id": 2,
+      "check": false,
+      "task": "Create new ticket example",
+      "status": "New",
+      "color": "green-700"
+    },
+    {
+      "id": 3,
+      "check": true,
+      "task": "Update ticket report",
+      "status": "Default",
+      "color": "gray-400"
+    },
+    {
+      "id": 4,
+      "check": false,
+      "task": "Test",
+      "status": "new",
+      "color": "green-700"
+    }
+  ]
+}
