@@ -39,24 +39,33 @@ root
 |
 + src
 |   + app
-|   |   - router.jsx
+|   |   + services
+|   |   - router.ts
 |   |
 |   + assets
-|   |   - index.css
 |   |
 |   + common
 |   |   + component
-|   |   + fake
 |   |   + utils
 |   |
+|   + data
+|   |   + types
+|   |   - _api.ts
+|   |
+|   + domain
+|   |   + model
+|   |     - _Entity.ts
+|   |   + repository
+|   |     - _repository.ts
+|   |
 |   + features
-|   - main.jsx
+|   - main.ts
 |
 - .env
 - index.html
 - package.json
 - postcss.config.cgs
 - README.md
-- tailwind.config.cjs
-- vite.config.js
+- tailwind.config.js
+- vite.config.ts
 ```

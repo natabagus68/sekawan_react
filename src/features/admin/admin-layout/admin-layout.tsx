@@ -16,7 +16,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { Bell, Lightbulb, SearchIcon } from "lucide-react";
 import { LayoutContext } from "./layout-context";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 export default function AdminLayout() {
   const model = useAdmin();
   return (
@@ -29,18 +29,22 @@ export default function AdminLayout() {
           </Typography>
         </div>
         <List className="w-full text-gray-400">
-          <ListItem>
-            <ListItemPrefix>
-              <ChartPieIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Overview
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <TicketIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Tiket
-          </ListItem>
+          <NavLink to={"/admin/overview"}>
+            <ListItem>
+              <ListItemPrefix>
+                <ChartPieIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Overview
+            </ListItem>
+          </NavLink>
+          <NavLink to={"/admin/tiket"}>
+            <ListItem>
+              <ListItemPrefix>
+                <TicketIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Tiket
+            </ListItem>
+          </NavLink>
           <ListItem>
             <ListItemPrefix>
               <Lightbulb className="h-5 w-5" />
