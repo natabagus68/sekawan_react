@@ -47,6 +47,8 @@ yarn add -D json-server json-server-auth
 json-server db.json -m ./node_modules/json-server-auth
 ```
 
+4. Adjust all the variables in env.development with values ​​that match the port running on your device
+
 ## Folder Structure
 
 ```
