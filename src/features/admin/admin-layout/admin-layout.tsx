@@ -6,6 +6,11 @@ import {
   ListItem,
   ListItemPrefix,
   Avatar,
+  IconButton,
+  SpeedDial,
+  SpeedDialHandler,
+  SpeedDialContent,
+  SpeedDialAction,
 } from "@material-tailwind/react";
 import {
   ChartPieIcon,
@@ -17,6 +22,7 @@ import {
 import { Bell, Lightbulb, SearchIcon } from "lucide-react";
 import { LayoutContext } from "./layout-context";
 import { NavLink, Outlet } from "react-router-dom";
+import LogoutIcon from "@common/components/icons-new/LogoutIcon";
 export default function AdminLayout() {
   const model = useAdmin();
   return (
@@ -86,12 +92,21 @@ export default function AdminLayout() {
             <div className="h-full flex items-center pb-1 text-gray-400">|</div>
             <div className="flex items-center gap-2">
               <p className="text-[14px] text-gray-800 font-[600]">Nata Bagus</p>
-              <Avatar
-                src="https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-                alt="avatar"
-                size="sm"
-                className="w-7 h-7"
-              />
+              <SpeedDial>
+                <SpeedDialHandler>
+                  <Avatar
+                    src="https://images.unsplash.com/photo-1581382575275-97901c2635b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                    alt="avatar"
+                    size="sm"
+                    className="w-7 h-7"
+                  />
+                </SpeedDialHandler>
+                <SpeedDialContent>
+                  <SpeedDialAction>
+                    <LogoutIcon className="h-5 w-5" onClick={model.logout} />
+                  </SpeedDialAction>
+                </SpeedDialContent>
+              </SpeedDial>
             </div>
           </div>
         </nav>

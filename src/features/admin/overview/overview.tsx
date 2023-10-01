@@ -14,7 +14,7 @@ export const Overview = () => {
   return (
     <>
       <main className="mb-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-5">
           {model.overview?.prompts?.map((item) => {
             return <Prompt head={item?.head} content={item?.value} />;
           })}
@@ -153,8 +153,8 @@ export const Overview = () => {
                             {item.name}
                           </Typography>
                         </div>
-                        <Button className={`py-1 px-2 bg-${item.color}`}>
-                          {item.type}
+                        <Button className={`py-1 px-2 bg-${item?.color}`}>
+                          {item?.type}
                         </Button>
                       </div>
                     );

@@ -19,7 +19,7 @@ export class AuthApiRepository implements AuthRepository {
       password: props.unmarshall().password,
     });
     return Auth.create({
-      token: data?.accesssToken ?? "",
+      token: data?.accessToken ?? "",
       user: User.create({
         email: data?.user?.email ?? "",
       }),

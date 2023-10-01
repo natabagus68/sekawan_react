@@ -3,9 +3,11 @@ import { Overview } from "@domain/models/overview";
 import { SideChartOverview } from "@domain/models/side-chart-overview";
 import { Task } from "@domain/models/task";
 import { OverviewRepository } from "@domain/repositories/overview-repository";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { LayoutContext } from "../admin-layout/layout-context";
 
 export const useOverview = () => {
+  const { data, change } = useContext(LayoutContext);
   const overRep: OverviewRepository = new OverviewApiRepository();
   const [task, setTask] = useState(
     Task.create({
@@ -89,6 +91,7 @@ export const useOverview = () => {
 
   useEffect(() => {
     fetchDataOverview();
+    change("Overview");
   }, []);
   return {
     task,
